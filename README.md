@@ -1,5 +1,8 @@
 # MetDIT: Transforming and Analyzing Clinical Metabolomics Data with Convolutional Neural Networks
 
+## :high_brightness: Demo Tool
+
+
 ## Introduction
 This paper introduces a new method called MetDIT, designed to effectively analyze intricate metabolomics data using deep convolutional neural networks (CNN). MetDIT comprises two components: TransOmics and NetOmics. Since CNN models have difficulty in processing one-dimensional (1D) sequence data efficiently, we developed TransOmics, a framework that transforms sequence data into two-dimensional (2D) images, while maintaining a one-to-one correspondence between the sequences and images. NetOmics, the second component, leverages a CNN architecture to extract more discriminative repre-sentations from the transformed samples.
 
@@ -68,7 +71,8 @@ We conduct extensive experiments on three benchmark dataset, including: **CA**, 
 
 ### Example of TransOmics
 
-The TransOmics is responsible for transferring metabolom-ic data into 2D images. It contains to parties: data pre-processing and image transfer. 
+The TransOmics is responsible for transferring metabolomics data into 2D images. It contains to parties: data pre-processing and image transfer. 
+
 
 1. Data pre-processing:
    ```
@@ -89,14 +93,16 @@ The TransOmics is responsible for transferring metabolom-ic data into 2D images.
     ```
     python 02-convert_by_cols.py
     ```
+
 - The converted samples are show as follows (with 128 pix):
 
    ![cv-1](./images/cv1.png)
    ![cv-2](./images/cv2.png)
-   
+
    ![cv-2](./images/cv3.png)
    ![cv-3](./images/cv4.png)
-  -------------
+
+-------------
 
 If you want use this code to your own **custom dataset**, please follow the following steps.
 
@@ -105,10 +111,35 @@ If you want use this code to your own **custom dataset**, please follow the foll
    Our code must be used on the format data to guarantee get the correct results. The data type is shown as follow.
 
    * The first line is the name of bio-markers.
-   * The first row is the gound-truth label, represented by integers (*e.g. 1,2,3,...*).
+   * The first row is the gound-truth label, represented by integers (*e.g. 1,2,3,...*)
    * Each line defines a individual sample. 
 
    ![data-type](./images/seq_data_sample.png)
 
+
+* **Notable:** TransOmics can also be considered as a high-performance tool for feature selection and data normalization. 
+
+   - You can use the following command for feature ranking:
+
+      ```
+      python 02-conv xxx feature ranking
+      ```
+      
+      The feature ranking file should be saved on "ccc path" .
+
+   - For data normalization, you can execute the code:
+      
+      ```
+      python 02-conv xxx data normalization
+      ```
+
+      The normalized file can be found in "ccc path".
+
    
+   
+
+
+
+
+### Example of NetOmics
 
